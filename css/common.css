@@ -37,3 +37,14 @@ button {
 .gallery img {
   width: 100%;
 }
+
+#boxes {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#boxes > div {
+ outline: 1px solid #000000;
+}

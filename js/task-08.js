@@ -5,20 +5,15 @@ form.addEventListener("submit", onSubmitForm);
 function onSubmitForm(evt) {
     evt.preventDefault();
 
-    const formElements = evt.currentTarget.elements;
-    
-    const mail = formElements.email.value;
-    const password = formElements.password.value;
+    const { email, password } = evt.currentTarget.elements;
 
-    if (mail && password) {
-        const mailName = formElements.email.name;
-        const passwordName = formElements.password.name;
+    if (email.value && password.value) {
         const formData = {
-            [mailName]: mail,
-            [passwordName]: password,
+            [email.name]: email.value,
+            [password.name]: password.value,
         };
         console.log(formData);
-        form.reset(); 
+        evt.currentTarget.reset(); 
     } else {
         const message = "Please, fill in form fields!";
         alert(message);

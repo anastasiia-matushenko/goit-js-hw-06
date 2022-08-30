@@ -19,25 +19,26 @@ controls.addEventListener("click", (evt) => {
   }
 });
 
-function createBoxes(amount) {
-  let str = "";
-  for (let i = 0; i < amount; i += 1) {
-    str += `<div></div>`;
-  };
- 
-  boxes.insertAdjacentHTML("beforeend", str);
+let value = 30;
 
-  [...boxes.children].reduce((acc, item) => {
-    item.style.width = `${acc.width}px`;
-    item.style.height = `${acc.height}px`;
+function createBoxes(amount) {
+  const itemsBoxes = [];
+
+ for (let i = 0; i < amount; i += 1) {
+    const item = document.createElement("div");
+    item.style.width = `${value}px`;
+    item.style.height = `${value}px`;
     item.style.backgroundColor = getRandomHexColor();
-    acc.width += 10;
-    acc.height += 10;
-    return acc;
-  }, { width: 30, height: 30, });
+    
+    itemsBoxes.push(item);
+    value += 10;
+  };
+
+  boxes.append(...itemsBoxes);
 };
 
 function destroyBoxes() {
+  value = 30;
   boxes.innerHTML = "";
   input.value = "";
 };
